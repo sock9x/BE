@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+group = 'com.px.tool'
+version = 'RC'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation (
+            'org.flywaydb:flyway-core',
+            'org.springframework.boot:spring-boot-starter-data-jpa',
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.boot:spring-boot-starter-web',
+//            'io.springfox:springfox-swagger2:2.7.0',
+//            'io.springfox:springfox-swagger-ui:2.7.0',
+            'io.jsonwebtoken:jjwt:0.9.1',
+            'commons-io:commons-io:2.6',
+            'com.google.guava:guava:28.2-jre'
+
+    )
+
+    implementation( // excel file
+            'org.apache.poi:poi-ooxml:4.1.0',
+            'org.apache.poi:poi:4.1.0'
+    )
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    bootRun {
+        systemProperties = System.properties
+        jvmArgs = [
+                "-Xdebug",
+                "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5016"
+        ]
+    }
+}

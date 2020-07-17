@@ -1,0 +1,26 @@
+{
+  "pages": [
+    {
+      "name": "user",
+      "enable": true,
+      "funcs": [
+        {
+          "name": "save",
+          "enable": true
+        },
+        {
+          "name": "edit",
+          "enable": true
+        },
+        {
+          "name": "filter",
+          "enable": true
+        },
+        {
+          "name": "delete",
+          "enable": true
+        }
+      ]
+    }
+  ]
+}
